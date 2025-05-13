@@ -1,8 +1,8 @@
 // import { useEffect, useState } from "react";
 import EventRegistration from "../component/EventRegisteration";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import api from "../libs/api";
 
 type dataProp = {
   data: {
@@ -21,8 +21,8 @@ const Home = () => {
   const { data }: UseQueryResult<dataProp, Error | null> = useQuery({
     queryKey: ["event"],
     queryFn: async () => {
-      const response = await axios.get(
-        `http://localhost:3000/events/basic/${decodedString}`
+      const response = await api.get(
+        `/events/basic/${decodedString}`
       );
       return response;
     },

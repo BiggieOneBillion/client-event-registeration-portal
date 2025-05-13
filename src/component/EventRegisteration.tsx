@@ -14,9 +14,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import axios from "axios";
 import SuccessModal from "./SuccessModal";
 import { useParams } from "react-router-dom";
+import api from "../libs/api";
 
 interface formData {
   eventId: string;
@@ -51,11 +51,11 @@ const EventRegistration: React.FC<PropsType> = ({ eventName }) => {
   const onSubmit: SubmitHandler<formData> = async (data) => {
     setIsLoading(true);
 
-    console.log(data);
+    // console.log(data);
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/users-customers/create",
+      const response = await api.post(
+        "users-customers/create",
         { ...data, eventId: decodedString },
         {
           headers: {

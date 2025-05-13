@@ -33,7 +33,7 @@ const Home = () => {
       {data ? (
         <section>
           <main className="grid grid-cols-1 grid-rows-[200px_1fr] md:grid-rows-1 lg:grid-cols-2 lg:gap-10 h-fit lg:h-screen overflow-hidden">
-            <section className="md:h-screen w-full overflow-hidden md:row-start-1 md:row-span-1 md:col-start-1 md:col-span-1">
+            <section className="md:h-screen w-full px-10 overflow-hidden md:row-start-1 md:row-span-1 md:col-start-1 md:col-span-1">
               <img
                 src={data.data.data.eventImg}
                 alt="event img"

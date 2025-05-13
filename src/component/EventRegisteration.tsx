@@ -1,7 +1,11 @@
 import InputContainer from "./InputContainer";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoCallOutline, IoPersonCircleOutline } from "react-icons/io5";
-import { MdEditNote, MdOutlineMyLocation } from "react-icons/md";
+import {
+  MdEditNote,
+  MdOutlineEvent,
+  MdOutlineMyLocation,
+} from "react-icons/md";
 import {
   Button,
   FormControl,
@@ -115,87 +119,92 @@ const EventRegistration: React.FC<PropsType> = ({ eventName }) => {
   };
 
   return (
-    <section className="space-y-4 md:space-y-10">
+    <section className="space-y-4 md:space-y-4">
       <div className="space-y-2 md:space-y-0">
-        <h1 className="text-xl leading-tight md:leading-normal font-semibold md:text-2xl md:font-medium text-black/80">
-          {eventName} - Event Registeration Form
-        </h1>
-        <p className="text-sm text-gray-400 font-medium">
-          Fill out the form to register for the {eventName} - event
+        <p className="text-sm font-medium text-gray-400 flex items-center gap-1">
+          <MdOutlineEvent /> Event Registeration Form
         </p>
+        <h1 className="text-xl capitalize leading-tight md:leading-normal font-semibold md:text-2xl md:font-medium text-black/80">
+          {eventName}
+        </h1>
       </div>
-      <form
-        className="space-y-6 p-2 lg:p-10 lg:w-[700px] rounded-md border focus-within:outline-black"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        {/* Title */}
-        <FormControl>
-          <InputContainer
-            register={register}
-            type="text"
-            icon={<IoPersonCircleOutline />}
-            inputname="name"
-            placeholder="Enter your name"
-            error={errors.name}
-          />
-          <FormHelperText>
-            Your fullname, in this order firstname and lastname.
-          </FormHelperText>
-        </FormControl>
-        {/* Description */}
-        <FormControl>
-          <InputContainer
-            register={register}
-            type="email"
-            icon={<MdEditNote />}
-            inputname="email"
-            placeholder="Enter your email"
-            error={errors.email}
-          />
-          <FormHelperText>
-            Email you would like to receive your access code?
-          </FormHelperText>
-        </FormControl>
-        {/* Location */}
-        <FormControl>
-          <InputContainer
-            register={register}
-            type="text"
-            icon={<MdOutlineMyLocation />}
-            inputname="location"
-            placeholder="Enter your event location"
-            error={errors.location}
-          />
-          <FormHelperText>
-            This is the location you are registering from. This helps us know
-            where our customers are coming from.
-          </FormHelperText>
-        </FormControl>
-        {/* phone number */}
-        <FormControl>
-          <InputContainer
-            register={register}
-            type="tel"
-            icon={<IoCallOutline />}
-            inputname="phoneNumber"
-            placeholder="Enter your phone number"
-            error={errors.phoneNumber}
-          />
-          <FormHelperText>Your contact phone number</FormHelperText>
-        </FormControl>
-        {/* Submit Button */}
-        <div className="flex justify-end">
-          <Button
-            isLoading={isLoading}
-            loadingText="Processing"
-            // variant={"authSolid"}
-            type="submit"
-            padding={"0 60px"}
-          >
-            Submit
-          </Button>
-        </div>
-      </form>
+      <section className="space-y-1">
+        <p className="text-sm text-gray-400 font-medium">
+          Fill out the form to register for this event
+        </p>
+        <form
+          className="space-y-6 p-2 lg:p-10 lg:w-[700px] rounded-md border focus-within:outline-black"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          {/* Title */}
+          <FormControl>
+            <InputContainer
+              register={register}
+              type="text"
+              icon={<IoPersonCircleOutline />}
+              inputname="name"
+              placeholder="Enter your name"
+              error={errors.name}
+            />
+            <FormHelperText>
+              Your fullname, in this order firstname and lastname.
+            </FormHelperText>
+          </FormControl>
+          {/* Description */}
+          <FormControl>
+            <InputContainer
+              register={register}
+              type="email"
+              icon={<MdEditNote />}
+              inputname="email"
+              placeholder="Enter your email"
+              error={errors.email}
+            />
+            <FormHelperText>
+              Email you would like to receive your access code?
+            </FormHelperText>
+          </FormControl>
+          {/* Location */}
+          <FormControl>
+            <InputContainer
+              register={register}
+              type="text"
+              icon={<MdOutlineMyLocation />}
+              inputname="location"
+              placeholder="Enter your event location"
+              error={errors.location}
+            />
+            <FormHelperText>
+              This is the location you are registering from. This helps us know
+              where our customers are coming from.
+            </FormHelperText>
+          </FormControl>
+          {/* phone number */}
+          <FormControl>
+            <InputContainer
+              register={register}
+              type="tel"
+              icon={<IoCallOutline />}
+              inputname="phoneNumber"
+              placeholder="Enter your phone number"
+              error={errors.phoneNumber}
+            />
+            <FormHelperText>Your contact phone number</FormHelperText>
+          </FormControl>
+          {/* Submit Button */}
+          <div className="flex justify-end">
+            <Button
+              isLoading={isLoading}
+              loadingText="Processing"
+              // variant={"authSolid"}
+              type="submit"
+              padding={"0 60px"}
+            >
+              Submit
+            </Button>
+          </div>
+        </form>
+      </section>
       <SuccessModal isOpen={isOpen} onClose={onClose} />
     </section>
   );

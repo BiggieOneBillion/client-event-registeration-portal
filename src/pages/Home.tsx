@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import EventRegistration from "../component/EventRegisteration";
 import axios from "axios";
 import { useParams } from "react-router-dom";
